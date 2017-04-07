@@ -1,0 +1,1508 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/csquared/node-logfmt"
+
+    >logfmt (v1.2.0)</a>
+</h1>
+<h4>key=value logger and parser</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.logfmt">module logfmt</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.bodyParser">
+            function <span class="apidocSignatureSpan">logfmt.</span>bodyParser
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.bodyParserStream">
+            function <span class="apidocSignatureSpan">logfmt.</span>bodyParserStream
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.error">
+            function <span class="apidocSignatureSpan">logfmt.</span>error
+            <span class="apidocSignatureSpan">(err, id)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.log">
+            function <span class="apidocSignatureSpan">logfmt.</span>log
+            <span class="apidocSignatureSpan">(data, stream)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.namespace">
+            function <span class="apidocSignatureSpan">logfmt.</span>namespace
+            <span class="apidocSignatureSpan">(object)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.parse">
+            function <span class="apidocSignatureSpan">logfmt.</span>parse
+            <span class="apidocSignatureSpan">(line)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.requestLogger">
+            function <span class="apidocSignatureSpan">logfmt.</span>requestLogger
+            <span class="apidocSignatureSpan">(options, formatter)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.streamParser">
+            function <span class="apidocSignatureSpan">logfmt.</span>streamParser
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.streamStringify">
+            function <span class="apidocSignatureSpan">logfmt.</span>streamStringify
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.stringify">
+            function <span class="apidocSignatureSpan">logfmt.</span>stringify
+            <span class="apidocSignatureSpan">(data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.time">
+            function <span class="apidocSignatureSpan">logfmt.</span>time
+            <span class="apidocSignatureSpan">(label)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">logfmt.</span>logfmt_parser</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">logfmt.</span>logger</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">logfmt.</span>request_logger</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">logfmt.</span>streaming</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.logfmt.logfmt_parser">module logfmt.logfmt_parser</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">boolean <span class="apidocSignatureSpan">logfmt.logfmt_parser.</span>debug</span>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.logfmt_parser.parse">
+            function <span class="apidocSignatureSpan">logfmt.logfmt_parser.</span>parse
+            <span class="apidocSignatureSpan">(line)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.logfmt.logger">module logfmt.logger</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.logger.error">
+            function <span class="apidocSignatureSpan">logfmt.logger.</span>error
+            <span class="apidocSignatureSpan">(err, id)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.logger.log">
+            function <span class="apidocSignatureSpan">logfmt.logger.</span>log
+            <span class="apidocSignatureSpan">(data, stream)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.logger.namespace">
+            function <span class="apidocSignatureSpan">logfmt.logger.</span>namespace
+            <span class="apidocSignatureSpan">(object)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.logger.time">
+            function <span class="apidocSignatureSpan">logfmt.logger.</span>time
+            <span class="apidocSignatureSpan">(label)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.logfmt.requestLogger">module logfmt.requestLogger</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.requestLogger.requestLogger">
+            function <span class="apidocSignatureSpan">logfmt.</span>requestLogger
+            <span class="apidocSignatureSpan">(options, formatter)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.requestLogger.commonFormatter">
+            function <span class="apidocSignatureSpan">logfmt.requestLogger.</span>commonFormatter
+            <span class="apidocSignatureSpan">(req, res)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.logfmt.request_logger">module logfmt.request_logger</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.request_logger.commonFormatter">
+            function <span class="apidocSignatureSpan">logfmt.request_logger.</span>commonFormatter
+            <span class="apidocSignatureSpan">(req, res)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.request_logger.init">
+            function <span class="apidocSignatureSpan">logfmt.request_logger.</span>init
+            <span class="apidocSignatureSpan">(logger, options, formatter)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.logfmt.streaming">module logfmt.streaming</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.streaming.streamParser">
+            function <span class="apidocSignatureSpan">logfmt.streaming.</span>streamParser
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.streaming.streamStringify">
+            function <span class="apidocSignatureSpan">logfmt.streaming.</span>streamStringify
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.logfmt.stringify">module logfmt.stringify</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.logfmt.stringify.stringify">
+            function <span class="apidocSignatureSpan">logfmt.</span>stringify
+            <span class="apidocSignatureSpan">(data)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.logfmt" id="apidoc.module.logfmt">module logfmt</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.bodyParser" id="apidoc.element.logfmt.bodyParser">
+        function <span class="apidocSignatureSpan">logfmt.</span>bodyParser
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">bodyParser = function (options) {
+  options || (options = {});
+  var mime = options.contentType || &#x22;application/logplex-1&#x22;;
+  return bodyParser({ contentType: mime, parser: this.parse });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+## express/restify parsing middleware
+
+```javascript
+  // streaming
+  app.use(logfmt.bodyParserStream());
+  // buffering
+  app.use(logfmt.<span class="apidocCodeKeywordSpan">bodyParser</span>());
+```
+
+#### `logfmt.bodyParserStream([opts])`
+
+Valid Options:
+
+- `contentType`: defaults to `application/logplex-1`
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.bodyParserStream" id="apidoc.element.logfmt.bodyParserStream">
+        function <span class="apidocSignatureSpan">logfmt.</span>bodyParserStream
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">bodyParserStream = function (options) {
+  options || (options = {});
+  var mime = options.contentType || &#x22;application/logplex-1&#x22;;
+  return bodyParserStream({ contentType: mime });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}).listen(3000);
+```
+
+## express/restify parsing middleware
+
+```javascript
+  // streaming
+  app.use(logfmt.<span class="apidocCodeKeywordSpan">bodyParserStream</span>());
+  // buffering
+  app.use(logfmt.bodyParser());
+```
+
+#### `logfmt.bodyParserStream([opts])`
+
+Valid Options:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.error" id="apidoc.element.logfmt.error">
+        function <span class="apidocSignatureSpan">logfmt.</span>error
+        <span class="apidocSignatureSpan">(err, id)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">error = function (err, id) {
+  this.maxErrorLines = this.maxErrorLines || 10;
+  if (id === undefined) {
+    id = Math.random().toString().slice(2, 12);
+  }
+  var errorLogger = this.namespace({
+    error: true,
+    id:id,
+    now: (new Date()).toISOString()
+  })
+  errorLogger.log({ message:err.message });
+  if (err.stack) {
+    var stack = err.stack.split(&#x27;\n&#x27;);
+    for (var line in stack) {
+      if (line &#x3e;= this.maxErrorLines) break;
+      errorLogger.log({ line:line, trace:stack[line] });
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var timer = logfmt.time(&#x27;time&#x27;).namespace({foo: &#x27;bar&#x27;});
+timer.log();
+//=&#x3e; time=1ms foo=bar
+timer.log();
+//=&#x3e; time=2ms foo=bar
+```
+
+### `logfmt.<span class="apidocCodeKeywordSpan">error</span>(error)`
+
+Accepts a Javascript `Error` object and converts it to logfmt format.
+
+It will print up to `logfmt.maxErrorLines` lines.
+
+```javascript
+var logfmt = require(&#x27;logfmt&#x27;);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.log" id="apidoc.element.logfmt.log">
+        function <span class="apidocSignatureSpan">logfmt.</span>log
+        <span class="apidocSignatureSpan">(data, stream)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">log = function (data, stream) {
+  this.stream = this.stream || process.stdout;
+  if(stream == undefined) stream = this.stream;
+
+  var logData = _.extend({}, this.defaultData, data);
+
+  if(this.timers){
+    for(var key in this.timers){
+      var now = (new Date()).getTime()
+      logData[key] = (now - this.timers[key]).toString() + &#x27;ms&#x27; ;
+    }
+  }
+
+  stream.write(this.stringify(logData) + &#x22;\n&#x22;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+var logfmt2 = new logfmt;
+
+// replace our stringify with JSON&#x27;s
+logfmt2.stringify = JSON.stringify
+
+// now we log JSON!
+logfmt2.<span class="apidocCodeKeywordSpan">log</span>({foo: &#x27;bar&#x27;})
+// {&#x22;foo&#x22;:&#x22;bar&#x22;}
+
+// and the original logfmt is untouched
+logfmt.log({foo: &#x27;bar&#x27;})
+// foo=bar
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.namespace" id="apidoc.element.logfmt.namespace">
+        function <span class="apidocSignatureSpan">logfmt.</span>namespace
+        <span class="apidocSignatureSpan">(object)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">namespace = function (object) {
+  var logfmt = require(&#x27;../logfmt&#x27;);
+  var namespaced = new logfmt()
+  var namespace  = _.extend({}, this.defaultData, object);
+  namespaced.stream = this.stream;
+  namespaced.defaultData = namespace
+  namespaced.timers = this.timers;
+  return namespaced;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+logfmt.log({hello: &#x27;stdout&#x27;});
+//=&#x3e; hello=stdout
+
+errorLogger.log({hello: &#x27;stderr&#x27;});
+//=&#x3e; hello=stderr
+```
+
+### `logfmt.<span class="apidocCodeKeywordSpan">namespace</span>(object)`
+
+Returns a new `logfmt` with object&#x27;s data included in every `log` call.
+
+```javascript
+var logfmt = require(&#x27;logfmt&#x27;).namespace({app: &#x27;logfmt&#x27;});
+
+logfmt.log({ &#x22;foo&#x22;: &#x22;bar&#x22;, &#x22;a&#x22;: 14, baz: &#x27;hello kitty&#x27;})
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.parse" id="apidoc.element.logfmt.parse">
+        function <span class="apidocSignatureSpan">logfmt.</span>parse
+        <span class="apidocSignatureSpan">(line)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse = function (line) {
+  var key = &#x27;&#x27;;
+  var value = &#x27;&#x27;;
+  var is_number = true;
+  var in_key    = false;
+  var in_value  = false;
+  var in_quote  = false;
+  var had_quote = false;
+  var object    = {};
+  var debug     = exports.debug;
+
+  if(line[line.length - 1] == &#x27;\n&#x27;){
+    line = line.slice(0,line.length - 1)
+  }
+
+  for(var i=0; i &#x3c;= line.length; i++){
+
+    if((line[i] == &#x27; &#x27; &#x26;&#x26; !in_quote) || i == line.length){
+      if(in_key &#x26;&#x26; key.length &#x3e; 0){
+        object[key] = true;
+      }else if(in_value){
+        if(value == &#x27;true&#x27;) value = true;
+        else if(value == &#x27;false&#x27;) value = false;
+        else if(value === &#x27;&#x27; &#x26;&#x26; !had_quote) value = null;
+        object[key] = value;
+        value = &#x27;&#x27;;
+      }
+
+      if(i == line.length) break;
+      else {
+        in_key   = false;
+        in_value = false;
+        in_quote = false;
+        had_quote = false;
+      }
+    }
+
+    if(line[i] == &#x27;=&#x27; &#x26;&#x26; !in_quote){
+      if(debug) console.log(&#x27;split&#x27;)
+      //split
+      in_key = false;
+      in_value = true;
+    }
+    else if(line[i] == &#x27;\\&#x27;){
+      i ++ ;
+      value += line[i];
+      if(debug) console.log(&#x27;escape: &#x27; + line[i])
+    }
+    else if(line[i] == &#x27;&#x22;&#x27;){
+      had_quote = true;
+      in_quote = !in_quote;
+      if(debug) console.log(&#x27;in quote: &#x27; + in_quote)
+    }
+    else if(line[i] != &#x27; &#x27; &#x26;&#x26; !in_value &#x26;&#x26; !in_key){
+      if(debug) console.log(&#x27;start key with: &#x27; + line[i])
+      in_key = true;
+      key = line[i];
+    }
+    else if(in_key){
+      if(debug) console.log(&#x27;add to key: &#x27; + line[i])
+      key += line[i]
+    }
+    else if(in_value){
+      if(debug) console.log(&#x27;add to value: &#x27; + line[i])
+      value += line[i];
+    }
+  }
+
+  return object;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+var logfmt = require(&#x27;logfmt&#x27;);
+
+logfmt.stringify({foo: &#x27;bar&#x27;});
+// &#x27;foo=bar&#x27;
+
+logfmt.<span class="apidocCodeKeywordSpan">parse</span>(&#x27;foo=bar&#x27;);
+// {foo: &#x27;bar&#x27;}
+```
+
+It is also a constructor function, so you can use `new logfmt` to create
+a new `logfmt` that you can configure differently.
+
+```javascript
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.requestLogger" id="apidoc.element.logfmt.requestLogger">
+        function <span class="apidocSignatureSpan">logfmt.</span>requestLogger
+        <span class="apidocSignatureSpan">(options, formatter)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">requestLogger = function (options, formatter) {
+  return requestLogger.init(this, options, formatter);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+//=&#x3e; at=error id=12345 line=0 trace=&#x22;Error: test error&#x22;
+//=&#x3e; ...
+```
+
+## express/restify logging middleware
+
+```javascript
+app.use(logfmt.<span class="apidocCodeKeywordSpan">requestLogger</span>());
+//=&#x3e; ip=127.0.0.1 time=2013-08-05T20:50:19.216Z method=POST path=/logs status=200 content_length=337 content_type=application
+/logplex-1 elapsed=4ms
+```
+
+#### `logfmt.requestLogger([options], [formatter(req, res)])`
+
+If no formatter is supplied it will default to `logfmt.requestLogger.commonFormatter` which is based
+on having similiar fields to the Apache Common Log format.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.streamParser" id="apidoc.element.logfmt.streamParser">
+        function <span class="apidocSignatureSpan">logfmt.</span>streamParser
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">streamParser = function (options){
+  var options = options || {};
+
+  var streamParser = new PassThrough();
+  var self = this;
+
+  var logfmtStream = through(function(line){
+    if(line !== &#x27;&#x27;) this.queue(self.parse(line))
+  })
+
+  // When a source stream is piped to us, undo that pipe, and save
+  // off the source stream piped into our internally managed streams.
+  streamParser.on(&#x27;pipe&#x27;, function(source) {
+    if(source.unpipe) source.unpipe(this);
+    this.transformStream = source.pipe(split()).pipe(logfmtStream);
+  });
+
+  // When we&#x27;re piped to another stream, instead pipe our internal
+  // transform stream to that destination.
+  streamParser.pipe = function(destination, options) {
+    return this.transformStream.pipe(destination, options);
+  };
+
+  return streamParser;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+We cannot arbitrarily convert numbers because that will drop precision for numbers that require more than 32 bits to represent them
+.
+
+
+## Streaming
+
+Put this in your pipe and smoke it.
+
+### `logfmt.<span class="apidocCodeKeywordSpan">streamParser</span>()`
+
+Creates a streaming parser that will automatically split and parse incoming lines and
+emit javascript objects.
+
+Stream in from STDIN
+
+```javascript
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.streamStringify" id="apidoc.element.logfmt.streamStringify">
+        function <span class="apidocSignatureSpan">logfmt.</span>streamStringify
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">streamStringify = function (options){
+  var self = this;
+  var options = options || {};
+  if(options.hasOwnProperty(&#x27;delimiter&#x27;)){
+    var delim = options.delimiter;
+  }else{
+    var delim = &#x22;\n&#x22;;
+  }
+
+  return through(function(data){
+    this.queue(self.stringify(data) + delim)
+  }, function(){
+    this.queue(null)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Or pipe from an HTTP request
+
+```javascript
+req.pipe(logfmt.streamParser())
+```
+
+### `logfmt.<span class="apidocCodeKeywordSpan">streamStringify</span>([options])`
+
+Pipe objects into the stream and it will write logfmt.
+You can customize the delimiter via the `options` object, which
+defaults to `\n` (newlines).
+
+```javascript
+var parseJSON = function(line) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.stringify" id="apidoc.element.logfmt.stringify">
+        function <span class="apidocSignatureSpan">logfmt.</span>stringify
+        <span class="apidocSignatureSpan">(data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">stringify = function (data){
+  var line = &#x27;&#x27;;
+
+  for(var key in data) {
+    var value = data[key];
+    var is_null = false;
+    if(value == null) {
+      is_null = true;
+      value = &#x27;&#x27;;
+    }
+    else value = value.toString();
+
+    var needs_quoting  = value.indexOf(&#x27; &#x27;) &#x3e; -1 || value.indexOf(&#x27;=&#x27;) &#x3e; -1;
+    var needs_escaping = value.indexOf(&#x27;&#x22;&#x27;) &#x3e; -1 || value.indexOf(&#x22;\\&#x22;) &#x3e; -1;
+
+    if(needs_escaping) value = value.replace(/[&#x22;\\]/g, &#x27;\\$&#x26;&#x27;);
+    if(needs_quoting) value = &#x27;&#x22;&#x27; + value + &#x27;&#x22;&#x27;;
+    if(value === &#x27;&#x27; &#x26;&#x26; !is_null) value = &#x27;&#x22;&#x22;&#x27;;
+
+    line += key + &#x27;=&#x27; + value + &#x27; &#x27;;
+  }
+
+  //trim traling space
+  return line.substring(0,line.length-1);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## node.js
+
+The `logfmt` module is a singleton that works directly from require.
+
+```javascript
+var logfmt = require(&#x27;logfmt&#x27;);
+
+logfmt.<span class="apidocCodeKeywordSpan">stringify</span>({foo: &#x27;bar&#x27;});
+// &#x27;foo=bar&#x27;
+
+logfmt.parse(&#x27;foo=bar&#x27;);
+// {foo: &#x27;bar&#x27;}
+```
+
+It is also a constructor function, so you can use `new logfmt` to create
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.time" id="apidoc.element.logfmt.time">
+        function <span class="apidocSignatureSpan">logfmt.</span>time
+        <span class="apidocSignatureSpan">(label)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">time = function (label) {
+  var logfmt = require(&#x27;../logfmt&#x27;);
+  var startTime = (new Date()).getTime();
+  var label  = label || &#x27;elapsed&#x27;;
+  var timer  = new logfmt();
+  timer.stream = this.stream;
+  timer.defaultData = this.defaultData;
+  timer.timers = _.extend({}, this.timers)
+  timer.timers[label] = startTime;
+  return timer;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+logfmt.log({})
+//=&#x3e; app=logfmt
+
+logfmt.log({hello: &#x27;world&#x27;})
+//=&#x3e; app=logfmt hello=world
+```
+
+### `logfmt.<span class="apidocCodeKeywordSpan">time</span>([label])`
+
+Log how long something takes.
+Returns a new `logfmt` with elapsed milliseconds included in every `log` call.
+
+- `label`: optional name for the milliseconds key. defaults to: `elapsed=&#x3c;milliseconds&#x3e;ms`
+
+```javascript
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.logfmt.logfmt_parser" id="apidoc.module.logfmt.logfmt_parser">module logfmt.logfmt_parser</a></h1>
+
+
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.logfmt_parser.parse" id="apidoc.element.logfmt.logfmt_parser.parse">
+        function <span class="apidocSignatureSpan">logfmt.logfmt_parser.</span>parse
+        <span class="apidocSignatureSpan">(line)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse = function (line) {
+  var key = &#x27;&#x27;;
+  var value = &#x27;&#x27;;
+  var is_number = true;
+  var in_key    = false;
+  var in_value  = false;
+  var in_quote  = false;
+  var had_quote = false;
+  var object    = {};
+  var debug     = exports.debug;
+
+  if(line[line.length - 1] == &#x27;\n&#x27;){
+    line = line.slice(0,line.length - 1)
+  }
+
+  for(var i=0; i &#x3c;= line.length; i++){
+
+    if((line[i] == &#x27; &#x27; &#x26;&#x26; !in_quote) || i == line.length){
+      if(in_key &#x26;&#x26; key.length &#x3e; 0){
+        object[key] = true;
+      }else if(in_value){
+        if(value == &#x27;true&#x27;) value = true;
+        else if(value == &#x27;false&#x27;) value = false;
+        else if(value === &#x27;&#x27; &#x26;&#x26; !had_quote) value = null;
+        object[key] = value;
+        value = &#x27;&#x27;;
+      }
+
+      if(i == line.length) break;
+      else {
+        in_key   = false;
+        in_value = false;
+        in_quote = false;
+        had_quote = false;
+      }
+    }
+
+    if(line[i] == &#x27;=&#x27; &#x26;&#x26; !in_quote){
+      if(debug) console.log(&#x27;split&#x27;)
+      //split
+      in_key = false;
+      in_value = true;
+    }
+    else if(line[i] == &#x27;\\&#x27;){
+      i ++ ;
+      value += line[i];
+      if(debug) console.log(&#x27;escape: &#x27; + line[i])
+    }
+    else if(line[i] == &#x27;&#x22;&#x27;){
+      had_quote = true;
+      in_quote = !in_quote;
+      if(debug) console.log(&#x27;in quote: &#x27; + in_quote)
+    }
+    else if(line[i] != &#x27; &#x27; &#x26;&#x26; !in_value &#x26;&#x26; !in_key){
+      if(debug) console.log(&#x27;start key with: &#x27; + line[i])
+      in_key = true;
+      key = line[i];
+    }
+    else if(in_key){
+      if(debug) console.log(&#x27;add to key: &#x27; + line[i])
+      key += line[i]
+    }
+    else if(in_value){
+      if(debug) console.log(&#x27;add to value: &#x27; + line[i])
+      value += line[i];
+    }
+  }
+
+  return object;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+var logfmt = require(&#x27;logfmt&#x27;);
+
+logfmt.stringify({foo: &#x27;bar&#x27;});
+// &#x27;foo=bar&#x27;
+
+logfmt.<span class="apidocCodeKeywordSpan">parse</span>(&#x27;foo=bar&#x27;);
+// {foo: &#x27;bar&#x27;}
+```
+
+It is also a constructor function, so you can use `new logfmt` to create
+a new `logfmt` that you can configure differently.
+
+```javascript
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.logfmt.logger" id="apidoc.module.logfmt.logger">module logfmt.logger</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.logger.error" id="apidoc.element.logfmt.logger.error">
+        function <span class="apidocSignatureSpan">logfmt.logger.</span>error
+        <span class="apidocSignatureSpan">(err, id)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">error = function (err, id) {
+  this.maxErrorLines = this.maxErrorLines || 10;
+  if (id === undefined) {
+    id = Math.random().toString().slice(2, 12);
+  }
+  var errorLogger = this.namespace({
+    error: true,
+    id:id,
+    now: (new Date()).toISOString()
+  })
+  errorLogger.log({ message:err.message });
+  if (err.stack) {
+    var stack = err.stack.split(&#x27;\n&#x27;);
+    for (var line in stack) {
+      if (line &#x3e;= this.maxErrorLines) break;
+      errorLogger.log({ line:line, trace:stack[line] });
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var timer = logfmt.time(&#x27;time&#x27;).namespace({foo: &#x27;bar&#x27;});
+timer.log();
+//=&#x3e; time=1ms foo=bar
+timer.log();
+//=&#x3e; time=2ms foo=bar
+```
+
+### `logfmt.<span class="apidocCodeKeywordSpan">error</span>(error)`
+
+Accepts a Javascript `Error` object and converts it to logfmt format.
+
+It will print up to `logfmt.maxErrorLines` lines.
+
+```javascript
+var logfmt = require(&#x27;logfmt&#x27;);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.logger.log" id="apidoc.element.logfmt.logger.log">
+        function <span class="apidocSignatureSpan">logfmt.logger.</span>log
+        <span class="apidocSignatureSpan">(data, stream)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">log = function (data, stream) {
+  this.stream = this.stream || process.stdout;
+  if(stream == undefined) stream = this.stream;
+
+  var logData = _.extend({}, this.defaultData, data);
+
+  if(this.timers){
+    for(var key in this.timers){
+      var now = (new Date()).getTime()
+      logData[key] = (now - this.timers[key]).toString() + &#x27;ms&#x27; ;
+    }
+  }
+
+  stream.write(this.stringify(logData) + &#x22;\n&#x22;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+var logfmt2 = new logfmt;
+
+// replace our stringify with JSON&#x27;s
+logfmt2.stringify = JSON.stringify
+
+// now we log JSON!
+logfmt2.<span class="apidocCodeKeywordSpan">log</span>({foo: &#x27;bar&#x27;})
+// {&#x22;foo&#x22;:&#x22;bar&#x22;}
+
+// and the original logfmt is untouched
+logfmt.log({foo: &#x27;bar&#x27;})
+// foo=bar
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.logger.namespace" id="apidoc.element.logfmt.logger.namespace">
+        function <span class="apidocSignatureSpan">logfmt.logger.</span>namespace
+        <span class="apidocSignatureSpan">(object)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">namespace = function (object) {
+  var logfmt = require(&#x27;../logfmt&#x27;);
+  var namespaced = new logfmt()
+  var namespace  = _.extend({}, this.defaultData, object);
+  namespaced.stream = this.stream;
+  namespaced.defaultData = namespace
+  namespaced.timers = this.timers;
+  return namespaced;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+logfmt.log({hello: &#x27;stdout&#x27;});
+//=&#x3e; hello=stdout
+
+errorLogger.log({hello: &#x27;stderr&#x27;});
+//=&#x3e; hello=stderr
+```
+
+### `logfmt.<span class="apidocCodeKeywordSpan">namespace</span>(object)`
+
+Returns a new `logfmt` with object&#x27;s data included in every `log` call.
+
+```javascript
+var logfmt = require(&#x27;logfmt&#x27;).namespace({app: &#x27;logfmt&#x27;});
+
+logfmt.log({ &#x22;foo&#x22;: &#x22;bar&#x22;, &#x22;a&#x22;: 14, baz: &#x27;hello kitty&#x27;})
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.logger.time" id="apidoc.element.logfmt.logger.time">
+        function <span class="apidocSignatureSpan">logfmt.logger.</span>time
+        <span class="apidocSignatureSpan">(label)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">time = function (label) {
+  var logfmt = require(&#x27;../logfmt&#x27;);
+  var startTime = (new Date()).getTime();
+  var label  = label || &#x27;elapsed&#x27;;
+  var timer  = new logfmt();
+  timer.stream = this.stream;
+  timer.defaultData = this.defaultData;
+  timer.timers = _.extend({}, this.timers)
+  timer.timers[label] = startTime;
+  return timer;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+logfmt.log({})
+//=&#x3e; app=logfmt
+
+logfmt.log({hello: &#x27;world&#x27;})
+//=&#x3e; app=logfmt hello=world
+```
+
+### `logfmt.<span class="apidocCodeKeywordSpan">time</span>([label])`
+
+Log how long something takes.
+Returns a new `logfmt` with elapsed milliseconds included in every `log` call.
+
+- `label`: optional name for the milliseconds key. defaults to: `elapsed=&#x3c;milliseconds&#x3e;ms`
+
+```javascript
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.logfmt.requestLogger" id="apidoc.module.logfmt.requestLogger">module logfmt.requestLogger</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.requestLogger.requestLogger" id="apidoc.element.logfmt.requestLogger.requestLogger">
+        function <span class="apidocSignatureSpan">logfmt.</span>requestLogger
+        <span class="apidocSignatureSpan">(options, formatter)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">requestLogger = function (options, formatter) {
+  return requestLogger.init(this, options, formatter);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+//=&#x3e; at=error id=12345 line=0 trace=&#x22;Error: test error&#x22;
+//=&#x3e; ...
+```
+
+## express/restify logging middleware
+
+```javascript
+app.use(logfmt.<span class="apidocCodeKeywordSpan">requestLogger</span>());
+//=&#x3e; ip=127.0.0.1 time=2013-08-05T20:50:19.216Z method=POST path=/logs status=200 content_length=337 content_type=application
+/logplex-1 elapsed=4ms
+```
+
+#### `logfmt.requestLogger([options], [formatter(req, res)])`
+
+If no formatter is supplied it will default to `logfmt.requestLogger.commonFormatter` which is based
+on having similiar fields to the Apache Common Log format.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.requestLogger.commonFormatter" id="apidoc.element.logfmt.requestLogger.commonFormatter">
+        function <span class="apidocSignatureSpan">logfmt.requestLogger.</span>commonFormatter
+        <span class="apidocSignatureSpan">(req, res)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">commonFormatter = function (req, res){
+  if((typeof req.path) == &#x27;function&#x27;){
+    //in restify path is a function
+    var path = req.path();
+  }
+  else{
+    //in express it is an attribute
+    var path = req.originalUrl || req.path || req.url;
+  }
+
+  var httpHeader = req.header &#x26;&#x26; req.header(&#x27;x-forwarded-for&#x27;)
+  var requestID  = req.header &#x26;&#x26; req.header(&#x27;x-request-id&#x27;)
+
+  var ip = req.ip || httpHeader
+                  || req.connection.remoteAddress;
+
+  var requestData =  {
+    ip: ip,
+    time: (new Date()).toISOString(),
+    method: req.method,
+    path: path,
+    &#x22;status&#x22;: res.statusCode,
+  }
+
+  if (requestID) {
+    requestData.request_id = requestID;
+  }
+
+  if(res.get){
+    requestData.content_length = res.get(&#x27;content-length&#x27;);
+    requestData.content_type = res.get(&#x27;content-type&#x27;);
+  }
+  return requestData;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+//=&#x3e; method=POST elapsed=4ms
+```
+
+It&#x27;s always possible to piggyback on top of the `commonFormatter`
+
+```javascript
+app.use(logfmt.requestLogger(function(req, res){
+  var data = logfmt.requestLogger.<span class="apidocCodeKeywordSpan">commonFormatter</span>(req, res)
+  return {
+    ip: data.ip,
+    time: data.time,
+    foo: &#x27;bar&#x27;
+  };
+}));
+//=&#x3e; ip=127.0.0.1 time=2013-08-05T20:50:19.216Z foo=bar elapsed=4ms
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.logfmt.request_logger" id="apidoc.module.logfmt.request_logger">module logfmt.request_logger</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.request_logger.commonFormatter" id="apidoc.element.logfmt.request_logger.commonFormatter">
+        function <span class="apidocSignatureSpan">logfmt.request_logger.</span>commonFormatter
+        <span class="apidocSignatureSpan">(req, res)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">commonFormatter = function (req, res){
+  if((typeof req.path) == &#x27;function&#x27;){
+    //in restify path is a function
+    var path = req.path();
+  }
+  else{
+    //in express it is an attribute
+    var path = req.originalUrl || req.path || req.url;
+  }
+
+  var httpHeader = req.header &#x26;&#x26; req.header(&#x27;x-forwarded-for&#x27;)
+  var requestID  = req.header &#x26;&#x26; req.header(&#x27;x-request-id&#x27;)
+
+  var ip = req.ip || httpHeader
+                  || req.connection.remoteAddress;
+
+  var requestData =  {
+    ip: ip,
+    time: (new Date()).toISOString(),
+    method: req.method,
+    path: path,
+    &#x22;status&#x22;: res.statusCode,
+  }
+
+  if (requestID) {
+    requestData.request_id = requestID;
+  }
+
+  if(res.get){
+    requestData.content_length = res.get(&#x27;content-length&#x27;);
+    requestData.content_type = res.get(&#x27;content-type&#x27;);
+  }
+  return requestData;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+//=&#x3e; method=POST elapsed=4ms
+```
+
+It&#x27;s always possible to piggyback on top of the `commonFormatter`
+
+```javascript
+app.use(logfmt.requestLogger(function(req, res){
+  var data = logfmt.requestLogger.<span class="apidocCodeKeywordSpan">commonFormatter</span>(req, res)
+  return {
+    ip: data.ip,
+    time: data.time,
+    foo: &#x27;bar&#x27;
+  };
+}));
+//=&#x3e; ip=127.0.0.1 time=2013-08-05T20:50:19.216Z foo=bar elapsed=4ms
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.request_logger.init" id="apidoc.element.logfmt.request_logger.init">
+        function <span class="apidocSignatureSpan">logfmt.request_logger.</span>init
+        <span class="apidocSignatureSpan">(logger, options, formatter)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">init = function (logger, options, formatter) {
+  this.logger = logger;
+
+  if(!formatter &#x26;&#x26; !options){
+    formatter = commonFormatter;
+    options = {};
+  }
+  else if(!formatter){
+    if(typeof options == &#x27;function&#x27;){
+      formatter = options;
+      options = {};
+    }else{
+      formatter = commonFormatter;
+    }
+  }
+  options = options || {};
+
+  if(options.immediate){
+    return immediateLogger(logger, options, formatter);
+  }else{
+    return timingLogger(logger, options, formatter);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+logfmt.prototype.bodyParserStream = function(options) {
+  options || (options = {});
+  var mime = options.contentType || &#x22;application/logplex-1&#x22;;
+  return bodyParserStream({ contentType: mime });
+};
+
+logfmt.prototype.requestLogger = function(options, formatter) {
+  return requestLogger.<span class="apidocCodeKeywordSpan">init</span>(this, options, formatter);
+};
+
+logfmt.prototype.requestLogger.commonFormatter = requestLogger.commonFormatter;
+
+_.extend(logfmt, logfmt.prototype);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.logfmt.streaming" id="apidoc.module.logfmt.streaming">module logfmt.streaming</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.streaming.streamParser" id="apidoc.element.logfmt.streaming.streamParser">
+        function <span class="apidocSignatureSpan">logfmt.streaming.</span>streamParser
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">streamParser = function (options){
+  var options = options || {};
+
+  var streamParser = new PassThrough();
+  var self = this;
+
+  var logfmtStream = through(function(line){
+    if(line !== &#x27;&#x27;) this.queue(self.parse(line))
+  })
+
+  // When a source stream is piped to us, undo that pipe, and save
+  // off the source stream piped into our internally managed streams.
+  streamParser.on(&#x27;pipe&#x27;, function(source) {
+    if(source.unpipe) source.unpipe(this);
+    this.transformStream = source.pipe(split()).pipe(logfmtStream);
+  });
+
+  // When we&#x27;re piped to another stream, instead pipe our internal
+  // transform stream to that destination.
+  streamParser.pipe = function(destination, options) {
+    return this.transformStream.pipe(destination, options);
+  };
+
+  return streamParser;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+We cannot arbitrarily convert numbers because that will drop precision for numbers that require more than 32 bits to represent them
+.
+
+
+## Streaming
+
+Put this in your pipe and smoke it.
+
+### `logfmt.<span class="apidocCodeKeywordSpan">streamParser</span>()`
+
+Creates a streaming parser that will automatically split and parse incoming lines and
+emit javascript objects.
+
+Stream in from STDIN
+
+```javascript
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.streaming.streamStringify" id="apidoc.element.logfmt.streaming.streamStringify">
+        function <span class="apidocSignatureSpan">logfmt.streaming.</span>streamStringify
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">streamStringify = function (options){
+  var self = this;
+  var options = options || {};
+  if(options.hasOwnProperty(&#x27;delimiter&#x27;)){
+    var delim = options.delimiter;
+  }else{
+    var delim = &#x22;\n&#x22;;
+  }
+
+  return through(function(data){
+    this.queue(self.stringify(data) + delim)
+  }, function(){
+    this.queue(null)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Or pipe from an HTTP request
+
+```javascript
+req.pipe(logfmt.streamParser())
+```
+
+### `logfmt.<span class="apidocCodeKeywordSpan">streamStringify</span>([options])`
+
+Pipe objects into the stream and it will write logfmt.
+You can customize the delimiter via the `options` object, which
+defaults to `\n` (newlines).
+
+```javascript
+var parseJSON = function(line) {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.logfmt.stringify" id="apidoc.module.logfmt.stringify">module logfmt.stringify</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.logfmt.stringify.stringify" id="apidoc.element.logfmt.stringify.stringify">
+        function <span class="apidocSignatureSpan">logfmt.</span>stringify
+        <span class="apidocSignatureSpan">(data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">stringify = function (data){
+  var line = &#x27;&#x27;;
+
+  for(var key in data) {
+    var value = data[key];
+    var is_null = false;
+    if(value == null) {
+      is_null = true;
+      value = &#x27;&#x27;;
+    }
+    else value = value.toString();
+
+    var needs_quoting  = value.indexOf(&#x27; &#x27;) &#x3e; -1 || value.indexOf(&#x27;=&#x27;) &#x3e; -1;
+    var needs_escaping = value.indexOf(&#x27;&#x22;&#x27;) &#x3e; -1 || value.indexOf(&#x22;\\&#x22;) &#x3e; -1;
+
+    if(needs_escaping) value = value.replace(/[&#x22;\\]/g, &#x27;\\$&#x26;&#x27;);
+    if(needs_quoting) value = &#x27;&#x22;&#x27; + value + &#x27;&#x22;&#x27;;
+    if(value === &#x27;&#x27; &#x26;&#x26; !is_null) value = &#x27;&#x22;&#x22;&#x27;;
+
+    line += key + &#x27;=&#x27; + value + &#x27; &#x27;;
+  }
+
+  //trim traling space
+  return line.substring(0,line.length-1);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## node.js
+
+The `logfmt` module is a singleton that works directly from require.
+
+```javascript
+var logfmt = require(&#x27;logfmt&#x27;);
+
+logfmt.<span class="apidocCodeKeywordSpan">stringify</span>({foo: &#x27;bar&#x27;});
+// &#x27;foo=bar&#x27;
+
+logfmt.parse(&#x27;foo=bar&#x27;);
+// {foo: &#x27;bar&#x27;}
+```
+
+It is also a constructor function, so you can use `new logfmt` to create
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
